@@ -1,0 +1,33 @@
+﻿@model Book;
+@{
+    ViewData["Title"] = "Book Page";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Search result!</h5>
+    @if (Model != null)
+    {
+        <table class="table table-responsive table-striped mt-5">
+            <tr>
+                <th>ISBN</th>
+                <th>Book Title</th>
+                <th>Author</th>
+                <th>Edition</th>
+                <th>Publication</th>
+            </tr>
+
+                <tr>
+                    <td>@Model.Publication</td>
+                    <td>@Model.Title</td>
+                    <td>@Model.Author</td>
+                    <td>@Model.Edition</td>
+                    <td>@Model.Publication</td>
+                </tr>
+        </table>
+    }
+    else
+    {
+        <p>No book to display!</p>
+    }
+</div>
+
