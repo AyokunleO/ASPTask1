@@ -13,5 +13,7 @@ namespace ASPTask1.Models
         public string Author { get; set; }
         public int Edition { get; set; }
         public string Publication { get; set; }
+        public string ImageUrl { get; set; }
+        public bool Borrow { get; set; } = false;
     }
 }

@@ -3,7 +3,9 @@
     ViewData["Title"] = "Book Info";
 }
 <div class="row">
-    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <img src=@Model.ImageUrl alt="Image Text" />
+    </div>
     <div class="col-md-6">
         <h3>Book Information</h3>
         <form>
@@ -31,6 +33,17 @@
                     <input type="text" readonly class="form-control" id="Publication" value="@Model.Publication">
                 </div>
             </div>
+            @if (Model.Borrow == false)
+            {
+                <button asp-controller="Home" asp-action="Borrow" asp-route-id="@Model.Id" type="button" class="btn btn-danger m-b-xs float-end" onclick="location.href='@Url.Action("Borrow", "home", @Model)'">Borrow Book</button>
+            }
+            else
+            {
+                <p>This book has been borrowed, checkout other books!</p>
+            }
+
+
+            <button asp-controller="Home" asp-action="Books" type="button" class="btn btn-danger m-b-xs float-end" onclick="location.href='@Url.Action("Books", "home")'">Back</button>
         </form>
     </div>
     <div class="col-md-3"></div>

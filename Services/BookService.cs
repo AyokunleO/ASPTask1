@@ -16,7 +16,7 @@ namespace ASPTask1.Services
 
         public IEnumerable<Book> GetBooks()
         {
-            return books.ToList();
+            return books.Where(b => b.Borrow == false).ToList();
         }
 
         public Book GetBook(int id)
@@ -24,9 +24,9 @@ namespace ASPTask1.Services
             Book book = books.FirstOrDefault(b => b.Id == id);
             return book;
         }
-        public Book GetBook(string title)
+        public IEnumerable<Book> GetBook(string title)
         {
-            Book book = books.FirstOrDefault(b => b.Title == title);
+            IEnumerable<Book> book = books.Where(b => b.Title.ToLower().Contains(title.ToLower()));
             return book;
         }
 

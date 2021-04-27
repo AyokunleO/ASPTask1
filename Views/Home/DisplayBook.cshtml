@@ -1,29 +1,33 @@
-﻿@model Book;
+﻿@model IEnumerable<Book>;
 @{
     ViewData["Title"] = "Book Page";
 }
 
 <div class="text-center">
     <h5 class="display-4">Search result!</h5>
-    @if (Model != null)
+    @if (Model.Count<Book>() != 0)
     {
-        <table class="table table-responsive table-striped mt-5">
-            <tr>
-                <th>ISBN</th>
-                <th>Book Title</th>
-                <th>Author</th>
-                <th>Edition</th>
-                <th>Publication</th>
-            </tr>
-
-                <tr>
-                    <td>@Model.Publication</td>
-                    <td>@Model.Title</td>
-                    <td>@Model.Author</td>
-                    <td>@Model.Edition</td>
-                    <td>@Model.Publication</td>
-                </tr>
-        </table>
+<table class="table table-responsive table-striped mt-5">
+    <tr>
+        <th>ISBN</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Edition</th>
+        <th>Publication</th>
+        <th>Action</th>
+    </tr>
+    @foreach (Book book in Model)
+    {
+<tr>
+    <td>@book.Isbn</td>
+    <td>@book.Title</td>
+    <td>@book.Author</td>
+    <td>@book.Edition</td>
+    <td>@book.Publication</td>
+    <td><a asp-controller="home" asp-action="book" asp-route-id="@book.Id">View Book Info</a></td>
+</tr>
+    }
+</table>
     }
     else
     {

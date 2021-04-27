@@ -60,10 +60,22 @@ namespace ASPTask1.Controllers
                 Title = book.Title,
                 Author = book.Author,
                 Edition = book.Edition,
-                Publication = book.Publication
+                Publication = book.Publication,
+                ImageUrl = book.ImageUrl
             };
             bookService.AddBook(book1);
             return RedirectToAction("Index");
+        }
+        public IActionResult Borrower(int id)
+        {
+            Book borrowBook = bookService.GetBook(id);
+            borrowBook.Borrow = true;
+
+            return View();
+        }
+        public IActionResult Borrow(Book book)
+        {
+            return View(book);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
